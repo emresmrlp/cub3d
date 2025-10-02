@@ -7,6 +7,6 @@
 #define IMG_HEIGHT 64
 #define IMG_WIDTH 64
 
-void init(t_game *game);
+void init(t_game *game, char *file);
 
 #endif

@@ -6,11 +6,13 @@
 /*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:49:16 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 20:56:03 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/02 21:43:56 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/init.h"
+#include "../external/get_next_line.h"
+#include <fcntl.h>
 
 static void init_param(t_game *game)
 {
@@ -54,8 +56,11 @@ static void init_texture(t_game *game)
 		(fatal_debug("EAST WALL CANT UPLOAD"), fatal_quit(game));
 }
 
-void init(t_game *game)
+void init(t_game *game, char *file)
 {
+	int file_fd = open(file, O_RDONLY, 0777);
+	char *gnl = get_next_line(file_fd);
+	printf("%s", gnl);
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		fatal_debug("mlx init failed!");

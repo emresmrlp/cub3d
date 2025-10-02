@@ -6,7 +6,7 @@
 /*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 20:41:31 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/02 21:31:56 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	if (!game)
 		fatal_debug("game allocation failed");
 	parse(game, argc, argv);
-	init(game);
+	init(game, argv[1]);
 	register_hooks(game);
 	start(game);
 	cleanup(game);
