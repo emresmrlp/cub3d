@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 15:53:36 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/02 19:06:55 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include "../mlx/mlx.h"
-# define SIZE_X 1024
-# define SIZE_Y 512
+# define SIZE_X 3000
+# define SIZE_Y 1500
 
 typedef struct s_texture
 {
@@ -25,10 +25,16 @@ typedef struct s_texture
 	int floor_color[3];
 	int x;
 	int y;
+	int img_height;
+	int img_width;
 	void *no_wall;
+	char *no_path;
 	void *so_wall;
+	char *so_path;
 	void *we_wall;
+	char *we_path;
 	void *ea_wall;
+	char *ea_path;
 }	t_texture;
 
 typedef struct s_game 
@@ -38,7 +44,6 @@ typedef struct s_game
 	t_texture texture;
 }	t_game;
 
-void init(t_game *game);
 void start(t_game *game);
 void quit(t_game *game);
 void fatal_quit(t_game *game);
