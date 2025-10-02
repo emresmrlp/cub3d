@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "debugger.h": "c",
+        "*.a": "c",
+        "mlx.h": "c",
+        "game.h": "c",
+        "memory.h": "c",
+        "stdlib.h": "c",
+        "random": "c"
+    }
+}
