@@ -14,12 +14,18 @@
 
 static void init_param(t_game *game)
 {
-	game->texture.ceiling_color[0] = 220; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.ceiling_color[1] = 100; //NEED PARAM VALUE (ITS JUST TEST)
+	game->texture.ceiling_color[0] = 255; //NEED PARAM VALUE (ITS JUST TEST)
+	game->texture.ceiling_color[1] = 255; //NEED PARAM VALUE (ITS JUST TEST)
 	game->texture.ceiling_color[2] = 0; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.floor_color[0] = 225; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.floor_color[1] = 30; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.floor_color[2] = 0; //NEED PARAM VALUE (ITS JUST TEST)
+	game->texture.floor_color[0] = 128; //NEED PARAM VALUE (ITS JUST TEST)
+	game->texture.floor_color[1] = 128; //NEED PARAM VALUE (ITS JUST TEST)
+	game->texture.floor_color[2] = 128; //NEED PARAM VALUE (ITS JUST TEST)
+	game->texture.background = mlx_new_image(game->mlx, SIZE_X, SIZE_Y);
+	if (!game->texture.background)
+		fatal_quit(game);
+	game->texture.addr = mlx_get_data_addr(game->texture.background, &game->texture.bits_pixel, &game->texture.x_byte, &game->texture.endian);
+	if (!game->texture.addr)
+		fatal_quit(game);
 	game->texture.img_height = 64;
 	game->texture.img_width = 64;
 	game->texture.x = 0;

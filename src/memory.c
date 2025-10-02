@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:09:09 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 19:32:58 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/02 21:04:37 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void cleanup_texture(t_game *game)
 		mlx_destroy_image(game->mlx, game->texture.ea_wall);
 	if (game->texture.so_wall)
 		mlx_destroy_image(game->mlx, game->texture.so_wall);
+	if (game->texture.background)
+		mlx_destroy_image(game->mlx, game->texture.background);
 }
 
 void cleanup(t_game *game)
