@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 16:02:17 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/02 19:23:04 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "../include/game.h"
 #include "../include/input.h"
 #include "../include/parse.h"
+#include "../include/init.h"
 
 int main(int argc, char **argv)
 {

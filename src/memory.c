@@ -6,11 +6,23 @@
 /*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:09:09 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 13:13:28 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/02 19:32:58 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/memory.h"
+
+static void cleanup_texture(t_game *game)
+{
+	if (game->texture.no_wall)
+		mlx_destroy_image(game->mlx, game->texture.no_wall);
+	if (game->texture.we_wall)
+		mlx_destroy_image(game->mlx, game->texture.we_wall);
+	if (game->texture.ea_wall)
+		mlx_destroy_image(game->mlx, game->texture.ea_wall);
+	if (game->texture.so_wall)
+		mlx_destroy_image(game->mlx, game->texture.so_wall);
+}
 
 void cleanup(t_game *game)
 {
@@ -24,6 +36,7 @@ void cleanup(t_game *game)
 		}
 		if (game->mlx)
 		{
+			cleanup_texture(game);
 			// YSUMERAL: Destroy the display and free the mlx pointer beacause it was allocated by mlx_init() function
 			mlx_destroy_display(game->mlx);
 			free(game->mlx);
