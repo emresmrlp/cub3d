@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 19:06:55 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/02 21:06:26 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ typedef struct s_texture
 	char *we_path;
 	void *ea_wall;
 	char *ea_path;
+	void *background;
+	char *addr;
+	int bits_pixel;
+	int x_byte;
+	int endian;
 }	t_texture;
 
 typedef struct s_game 
