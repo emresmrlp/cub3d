@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 20:41:31 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/03 14:13:24 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int main(int argc, char **argv)
 {
 	t_game *game;
 
-	if (argc != 2)
-		fatal_debug("arg error");
 	game = calloc(1, sizeof(t_game));
 	if (!game)
 		fatal_debug("game allocation failed");

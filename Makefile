@@ -13,8 +13,8 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I${INC_DIR}
 SRC_DIR = ./src
-GNL_DIR = ./external
-MLX_DIR = ./mlx
+GNL_DIR = ./external/gnl
+MLX_DIR = ./external/mlx
 INC_DIR = ./include
 MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext
 SRC =	$(SRC_DIR)/main.c \
@@ -24,7 +24,9 @@ SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/draw.c \
 		$(SRC_DIR)/parse.c \
 		$(SRC_DIR)/init.c \
-		$(SRC_DIR)/game.c
+		$(SRC_DIR)/util.c \
+		$(SRC_DIR)/calc.c \
+		$(SRC_DIR)/game.c 
 GNL =	$(GNL_DIR)/get_next_line.c \
 		$(GNL_DIR)/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
