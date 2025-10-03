@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< Updated upstream
-/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 19:23:04 by ysumeral         ###   ########.fr       */
-=======
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
 /*   Updated: 2025/10/03 14:13:24 by ysumeral         ###   ########.fr       */
->>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 

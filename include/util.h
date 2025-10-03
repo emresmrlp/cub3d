@@ -16,5 +16,6 @@
 # include "game.h"
 
 char	*ft_strrchr(char *s, int c);
+int     ft_strncmp(const char *s1, const char *s2, int n);
 
 #endif

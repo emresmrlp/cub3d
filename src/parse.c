@@ -19,8 +19,9 @@ static int  check_extension(char *path)
     if (!path)
         return (0);
     extension = ft_strrchr(path, '.');
-    if (!extension || !ft_strncmp(extension, ".cub")
-        || *(extension) - 1 == '/')
+    printf("%s\n", extension);
+    if (!extension || ft_strncmp(extension, ".cub", 5) != 0
+        || (path == extension))
         return (0);
     return (1);
 }
@@ -28,9 +29,11 @@ static int  check_extension(char *path)
 void parse(t_game *game, int argc, char **argv)
 {
     if (argc != 2)
-		fatal_quit("arg error");
+		(fatal_debug("arg error != 2"), fatal_quit(game));
     if (check_extension(argv[1]) == FALSE)
-        fatal_quit("extension error");
+    {
+        (fatal_debug("file extension error"), fatal_quit(game));
+    }
     game->texture.ceiling_color[0] = 255; //NEED PARAM VALUE (ITS JUST TEST)
 	game->texture.ceiling_color[1] = 255; //NEED PARAM VALUE (ITS JUST TEST)
 	game->texture.ceiling_color[2] = 0; //NEED PARAM VALUE (ITS JUST TEST)
