@@ -20,11 +20,11 @@ static int	width(int *counter, char *line)
 	while (line[len] != '\0')
 		len++;
 	if (*(line + len - 1) == '\n')
-		len = ft_strlen(line) - 1;
+		len = len - 1;
 	if (*counter == 0)
 		*counter = len;
-	if (*counter != len)
-		return (1);
+	else if (*counter < len)
+		*counter = len;
 	return (0);
 }
 

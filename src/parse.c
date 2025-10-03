@@ -40,17 +40,17 @@ static int  check_file(char *path)
 void parse_map(t_game *game, char *map_path)
 {
     (void)game;
-    printf("MAX_X: %d, MAX_Y: %d", calc_max(x), calc_max(y));
+    printf("MAX_X: %d, MAX_Y: %d\n", calc_max(map_path, 'x'), calc_max(map_path, 'y'));
 }
 
 void parse(t_game *game, int argc, char **argv)
 {
-    int map_path;
+    char *map_path;
 
     if (argc != 2)
 		(fatal_debug("arg error != 2"), fatal_quit(game));
     map_path = argv[1];
-    if (check_file(map_path]) == FALSE)
+    if (check_file(map_path) == FALSE)
         fatal_quit(game);
     parse_map(game, map_path);
     game->texture.no_path = "./texture/north.xpm"; //NEED PARAM VALUE (ITS JUST TEST)

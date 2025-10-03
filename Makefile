@@ -25,6 +25,7 @@ SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/parse.c \
 		$(SRC_DIR)/init.c \
 		$(SRC_DIR)/util.c \
+		$(SRC_DIR)/calc.c \
 		$(SRC_DIR)/game.c 
 GNL =	$(GNL_DIR)/get_next_line.c \
 		$(GNL_DIR)/get_next_line_utils.c
