@@ -3,17 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< Updated upstream
 #    By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
 #    Updated: 2025/10/02 18:50:30 by ysumeral         ###   ########.fr        #
+=======
+#    By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
+#    Updated: 2025/10/03 13:44:41 by ysumeral         ###   ########.fr        #
+>>>>>>> Stashed changes
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I${INC_DIR}
 SRC_DIR = ./src
+<<<<<<< Updated upstream
 MLX_DIR = ./mlx
+=======
+GNL_DIR = ./external
+MLX_DIR = ./external/mlx
+>>>>>>> Stashed changes
 INC_DIR = ./include
 MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext
 SRC =	$(SRC_DIR)/main.c \

@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< Updated upstream
 /*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:49:16 by ysumeral          #+#    #+#             */
 /*   Updated: 2025/10/02 21:06:27 by ysumeral         ###   ########.fr       */
+=======
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/02 18:49:16 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/10/03 13:38:48 by ysumeral         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +21,6 @@
 
 static void init_param(t_game *game)
 {
-	game->texture.ceiling_color[0] = 255; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.ceiling_color[1] = 255; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.ceiling_color[2] = 0; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.floor_color[0] = 128; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.floor_color[1] = 128; //NEED PARAM VALUE (ITS JUST TEST)
-	game->texture.floor_color[2] = 128; //NEED PARAM VALUE (ITS JUST TEST)
 	game->texture.background = mlx_new_image(game->mlx, SIZE_X, SIZE_Y);
 	if (!game->texture.background)
 		fatal_quit(game);
