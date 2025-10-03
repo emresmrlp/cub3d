@@ -20,10 +20,12 @@ static int  check_file(char *path)
     if (!path)
         return (0);
     extension = ft_strrchr(path, '.');
-    printf("%s\n", extension);
     if (!extension || ft_strncmp(extension, ".cub", 5) != 0
         || (path == extension))
-        (fatal_debug("file extension error"), return (0));
+    {
+        fatal_debug("file extension error");
+        return (0);
+    }
     fd = open(path, O_RDONLY);
     if (fd < 0)
     {
@@ -40,9 +42,7 @@ void parse(t_game *game, int argc, char **argv)
     if (argc != 2)
 		(fatal_debug("arg error != 2"), fatal_quit(game));
     if (check_file(argv[1]) == FALSE)
-    {
-        (fatal_quit(game));
-    }
+        fatal_quit(game);
     game->texture.ceiling_color[0] = 255; //NEED PARAM VALUE (ITS JUST TEST)
 	game->texture.ceiling_color[1] = 255; //NEED PARAM VALUE (ITS JUST TEST)
 	game->texture.ceiling_color[2] = 0; //NEED PARAM VALUE (ITS JUST TEST)
