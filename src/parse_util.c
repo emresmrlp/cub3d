@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 03:40:25 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/04 04:20:38 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/15 19:09:35 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int check_line(char *line)
 {
     int i;
 
-    if (ft_strncmp(line, "\n", 1) || ft_strncmp(line, " \n", 2))
+    if (!ft_strncmp(line, "\n", 1) || !ft_strncmp(line, " \n", 2))
         return (FALSE);
     i = 0;
     while (*(line + i) != '\0' && (*(line + i) == ' ' || *(line + i) == '\n'))
@@ -57,11 +57,33 @@ void set_color(t_game *game, int color, char *key, char *value, int *loc)
 
     rgb = ft_atoi(value + *loc);
     while (*(value + *loc) != '\0' && ft_isdigit(*(value + *loc)))
-        i++;
-    if (*(value + *loc) != ',')
-        (fatal_quit(game), fatal_debug("map file is incorrect (in colors)"));
-    if (key == 'F')
+        (*loc)++;
+    if (color < BLUE)
+    {
+        if (*(value + *loc) != ',')
+            (fatal_debug("map file is incorrect (in colors)"), fatal_quit(game));
+        (*loc)++;
+    }
+    if (!ft_strncmp(key, "F", 1))
         game->texture.floor_color[color] = rgb;
-    if (key == 'C')
+    else if (!ft_strncmp(key, "C", 1))
         game->texture.ceiling_color[color] = rgb;
+}
+
+void find_map(t_game *game, int fd)
+{
+	char *line;
+
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		if (check_line(line) == TRUE)
+		{
+			game->map.first_line = line;
+			return;
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
+	game->map.first_line = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:33:04 by zkayadib          #+#    #+#             */
-/*   Updated: 2024/12/25 18:25:42 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/15 19:16:47 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 void	*ft_calloc(size_t count, size_t size);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoinn(char *s1, char *s2);
 #endif

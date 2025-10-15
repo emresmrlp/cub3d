@@ -6,7 +6,7 @@
 /*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:30:33 by zkayadib          #+#    #+#             */
-/*   Updated: 2024/12/25 20:36:59 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/15 19:16:41 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*read_func(int *rd, int fd, char *after)
 		free(buffer);
 		return (NULL);
 	}
-	after = ft_strjoin(after, buffer);
+	after = ft_strjoinn(after, buffer);
 	free(buffer);
 	return (after);
 }

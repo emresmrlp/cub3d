@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+         #
+#    By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
-#    Updated: 2025/10/04 03:39:34 by ysumeral         ###   ########.fr        #
+#    Updated: 2025/10/15 19:12:55 by zkayadib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,12 @@ SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/memory.c \
 		$(SRC_DIR)/input.c \
 		$(SRC_DIR)/draw.c \
-		$(SRC_DIR)/parse.c \
+		$(SRC_DIR)/parse_file.c \
+		$(SRC_DIR)/parse_util.c \
+		$(SRC_DIR)/parse_line.c \
 		$(SRC_DIR)/init.c \
-		$(SRC_DIR)/util.c \
 		$(SRC_DIR)/calc.c \
-		$(SRC_DIR)/game.c 
+		$(SRC_DIR)/game.c
 GNL =	$(GNL_DIR)/get_next_line.c \
 		$(GNL_DIR)/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
@@ -40,7 +41,7 @@ all: $(NAME)
 $(NAME): $(OBJ) $(OBJ_GNL)
 	make -C $(LIBFT_DIR)
 	make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(OBJ_GNL) ${PRINTF_LIB} $(MLX)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(OBJ_GNL) $(LIBFT_LIB) $(MLX)
 
 clean:
 	rm -f $(OBJ) $(OBJ_GNL)
