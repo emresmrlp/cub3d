@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 03:40:25 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/15 19:09:35 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/18 20:03:51 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,29 +61,11 @@ void set_color(t_game *game, int color, char *key, char *value, int *loc)
     if (color < BLUE)
     {
         if (*(value + *loc) != ',')
-            (fatal_debug("map file is incorrect (in colors)"), fatal_quit(game));
+            (free(value), fatal_debug("map file is incorrect (in colors)"), fatal_quit(game));
         (*loc)++;
     }
     if (!ft_strncmp(key, "F", 1))
         game->texture.floor_color[color] = rgb;
     else if (!ft_strncmp(key, "C", 1))
         game->texture.ceiling_color[color] = rgb;
-}
-
-void find_map(t_game *game, int fd)
-{
-	char *line;
-
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		if (check_line(line) == TRUE)
-		{
-			game->map.first_line = line;
-			return;
-		}
-		free(line);
-		line = get_next_line(fd);
-	}
-	game->map.first_line = NULL;
 }

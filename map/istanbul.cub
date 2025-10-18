@@ -4,7 +4,7 @@ WE ./texture/west.xpm
 EA ./texture/east.xpm
 
 F 20,10,90
-C 20,190,24
+C 20,190,00
 
 
 

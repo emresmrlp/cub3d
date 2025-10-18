@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:56:24 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/15 19:10:22 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/18 19:02:24 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	parse_line(t_game *game, char *line)
 	free(value);
 }
 
-
 static int parse_file(t_game *game, char *map_path, int count)
 {
 	int		fd;
@@ -111,6 +110,9 @@ void parse(t_game *game, int argc, char **argv)
     char *map_path;
     int map_fd;
 	
+	// Color değerleri parse edilmemiş olarak işaretle (-1)
+	game->texture.floor_color[0] = -1;
+	game->texture.ceiling_color[0] = -1;
     if (argc != 2)
 		(fatal_debug("arg error != 2"), fatal_quit(game));
     map_path = argv[1];
@@ -124,13 +126,5 @@ void parse(t_game *game, int argc, char **argv)
         (fatal_debug("missing F (floor color) in map file"), fatal_quit(game));
     if (game->texture.ceiling_color[0] == -1)
         (fatal_debug("missing C (ceiling color) in map file"), fatal_quit(game));
-    
-	// for find first line --> game->map.first_line
-	// for other line --> get_next_line(map_fd)
-    find_map(game, map_fd);
-    printf("first line of man:%s", game->map.first_line);
-	char *line = get_next_line(map_fd);
-	printf("second line of map:%s", line);
-	// you should close map_fd when your work finish with map
-    // close(map_fd);you should close map_fd when your work finish with map
+    parse_map(game, map_fd);
 }

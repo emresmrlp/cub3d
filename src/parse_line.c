@@ -3,57 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   parse_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 21:16:05 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/10/15 19:10:38 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:20:57 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parse.h"
 
-static void	assign_texture_path_we_ea(t_game *game, char *key, char *path)
+static void assign_texture_path_util(t_game *game, char **dest_path, char *path)
 {
-	if (!ft_strncmp(key, "WE", 2))
-	{
-		if (game->texture.we_path)
-			(free(path), fatal_debug("Faulty map!"),
-				fatal_quit(game));
-		else
-			game->texture.we_path = path;
-	}
-	else if (!ft_strncmp(key, "EA", 2))
-	{
-		if (game->texture.ea_path)
-			(free(path), fatal_debug("Faulty map!"),
-				fatal_quit(game));
-		else
-			game->texture.ea_path = path;
-	}
+	if (*dest_path)
+		(free(path), fatal_debug("Faulty map!"),
+			fatal_quit(game));
+	else
+		*dest_path = path;
 }
 
 static void	assign_texture_path(t_game *game, char *key, char *path)
 {
+	char **dest_path;
+
+	dest_path = NULL;
 	if (!ft_strncmp(key, "NO", 2))
-	{
-		if (game->texture.no_path)
-			(free(path), fatal_debug("Faulty map!"),
-				fatal_quit(game));
-		else
-			game->texture.no_path = path;
-	}
+		dest_path = &game->texture.no_path;
 	else if (!ft_strncmp(key, "SO", 2))
-	{
-		if (game->texture.so_path)
-			(free(path), fatal_debug("Faulty map!"),
-				fatal_quit(game));
-		else
-			game->texture.so_path = path;
-	}
+		dest_path = &game->texture.so_path;
+	else if (!ft_strncmp(key, "WE", 2))
+		dest_path = &game->texture.we_path;
+	else if (!ft_strncmp(key, "EA", 2))
+		dest_path = &game->texture.ea_path;
 	else
 	{
-		assign_texture_path_we_ea(game, key, path);
+		free(path);
+		return ;
 	}
+	assign_texture_path_util(game, dest_path, path);
 }
 
 void	parse_path(t_game *game, char *key, char *value)

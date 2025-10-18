@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+         #
+#    By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
-#    Updated: 2025/10/15 19:12:55 by zkayadib         ###   ########.fr        #
+#    Updated: 2025/10/18 20:33:30 by ysumeral         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/parse_file.c \
 		$(SRC_DIR)/parse_util.c \
 		$(SRC_DIR)/parse_line.c \
+		$(SRC_DIR)/parse_map.c \
 		$(SRC_DIR)/init.c \
-		$(SRC_DIR)/calc.c \
 		$(SRC_DIR)/game.c
 GNL =	$(GNL_DIR)/get_next_line.c \
 		$(GNL_DIR)/get_next_line_utils.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/15 19:06:41 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:09:14 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ int main(int argc, char **argv)
 	game = calloc(1, sizeof(t_game));
 	if (!game)
 		fatal_debug("game allocation failed");
-	
-	// Color değerleri parse edilmemiş olarak işaretle (-1)
-	game->texture.floor_color[0] = -1;
-	game->texture.ceiling_color[0] = -1;
 	parse(game, argc, argv);
 	init(game);
 	register_hooks(game);

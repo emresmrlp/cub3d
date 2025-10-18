@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:09:09 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/02 21:04:37 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/18 19:35:03 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,36 @@ static void cleanup_texture(t_game *game)
 		mlx_destroy_image(game->mlx, game->texture.background);
 }
 
+static void cleanup_param(t_game *game)
+{
+	if (game->texture.no_path)
+	{
+		free(game->texture.no_path);
+		game->texture.no_path = NULL;
+	}
+	if (game->texture.we_path)
+	{
+		free(game->texture.we_path);
+		game->texture.we_path = NULL;
+	}
+	if (game->texture.ea_path)
+	{
+		free(game->texture.ea_path);
+		game->texture.ea_path = NULL;
+	}
+	if (game->texture.so_path)
+	{
+		free(game->texture.so_path);
+		game->texture.so_path = NULL;
+	}
+}
+
 void cleanup(t_game *game)
 {
+	get_next_line(-1);
 	if (game)
 	{
+		cleanup_param(game);
 		if (game->win)
 		{
 			// YSUMERAL: Destroy the window but do not free the pointer directly because it is managed by the MLX library
