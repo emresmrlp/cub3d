@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 03:40:25 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/18 20:03:51 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/19 15:39:39 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int  check_file(char *path)
         return (0);
     extension = ft_strrchr(path, '.'); // (test.cub -> .cub) or (test.txt -> .txt)
     if (!extension || ft_strncmp(extension, ".cub", 5) != 0
-        || (path == extension)) // extension is NULL? extension is just ".cub|0" (not test.cubA)? and path is not just ".cub"? controls
+        || (path == extension) || (*(extension - 1) == '/')) // extension is NULL? extension is just ".cub|0" (not test.cubA)? and path is not just ".cub"? controls
     {
         fatal_debug("file extension error");
         return (0);
@@ -30,7 +30,6 @@ int  check_file(char *path)
     if (fd < 0)
     {
         fatal_debug("file is not exist");
-        close(fd);
         return (0);
     }
     close(fd);
@@ -51,21 +50,21 @@ int check_line(char *line)
     return (TRUE);
 }
 
-void set_color(t_game *game, int color, char *key, char *value, int *loc)
+void set_color(t_game *game, int color, int *loc)
 {
     int rgb;
 
-    rgb = ft_atoi(value + *loc);
-    while (*(value + *loc) != '\0' && ft_isdigit(*(value + *loc)))
+    rgb = ft_atoi(game->texture.value + *loc);
+    while (*(game->texture.value + *loc) != '\0' && ft_isdigit(*(game->texture.value + *loc)))
         (*loc)++;
     if (color < BLUE)
     {
-        if (*(value + *loc) != ',')
-            (free(value), fatal_debug("map file is incorrect (in colors)"), fatal_quit(game));
+        if (*(game->texture.value + *loc) != ',')
+            (fatal_debug("map file is incorrect (in colors)"), fatal_quit(game));
         (*loc)++;
     }
-    if (!ft_strncmp(key, "F", 1))
+    if (!ft_strncmp(game->texture.key, "F", 1))
         game->texture.floor_color[color] = rgb;
-    else if (!ft_strncmp(key, "C", 1))
+    else if (!ft_strncmp(game->texture.key, "C", 1))
         game->texture.ceiling_color[color] = rgb;
 }
