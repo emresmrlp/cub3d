@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:30:33 by zkayadib          #+#    #+#             */
-/*   Updated: 2024/12/25 20:36:59 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:34:55 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*read_func(int *rd, int fd, char *after)
 		free(buffer);
 		return (NULL);
 	}
-	after = ft_strjoin(after, buffer);
+	after = ft_strjoinn(after, buffer);
 	free(buffer);
 	return (after);
 }
@@ -108,7 +108,12 @@ char	*get_next_line(int fd)
 
 	rd = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		if (after)
+			free(after);
+		after = NULL;
 		return (NULL);
+	}
 	while (rd > 0 && !findnewline(after))
 	{
 		after = read_func(&rd, fd, after);

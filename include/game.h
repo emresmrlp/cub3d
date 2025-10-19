@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/03 16:46:19 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/10/19 18:51:54 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include "../external/libft/libft.h"
 # include "../external/gnl/get_next_line.h"
 # include "../external/mlx/mlx.h"
 # define SIZE_X 1024
@@ -24,6 +25,8 @@
 
 typedef struct s_texture
 {
+	char *key;
+	char *value;
 	int ceiling_color[3];
 	int floor_color[3];
 	int x;
@@ -47,8 +50,9 @@ typedef struct s_texture
 
 typedef struct s_map
 {
+	t_list	*map_list;
 	char	**map;
-	char	**map_copy;
+	char	**copy;
 	int		size_x;
 	int		size_y;
 }	t_map;
@@ -57,6 +61,8 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	int			player_x;
+	int			player_y;
 	t_texture	texture;
 	t_map		map;
 }	t_game;
