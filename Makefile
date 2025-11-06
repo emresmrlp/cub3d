@@ -45,10 +45,12 @@ $(NAME): $(OBJ) $(OBJ_GNL)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(OBJ_GNL) $(LIBFT_LIB) $(MLX)
 
 clean:
+	make -C $(LIBFT_DIR) clean
+	make -C $(MLX_DIR) clean
 	rm -f $(OBJ) $(OBJ_GNL)
 
 fclean: clean
-	make -C $(LIBFT_DIR) clean
+	make -C $(LIBFT_DIR) fclean
 	make -C $(MLX_DIR) clean
 	rm -f $(NAME)
 
