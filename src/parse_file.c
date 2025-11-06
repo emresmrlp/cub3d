@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:56:24 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/19 16:00:22 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:10:59 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ void	parse_line(t_game *game, char *line)
 		return ;
 	while (line[i] != '\0' && (line[i] == ' ' || line[i] == '\t'))
 		i++;
-	free(game->texture.value);
+	// zulfiye: double free alıyorduk
+	if (game->texture.value)
+		free(game->texture.value);
 	game->texture.value = ft_substr(line, i, ft_strlen(line) - i);
 	if (!game->texture.value)
 	{
@@ -107,7 +109,9 @@ void parse(t_game *game, int argc, char **argv)
 	char *map_path;
 	int map_fd;
 	
-	// Color değerleri parse edilmemiş olarak işaretle (-1)
+	// zulfiye: key ve value texture Initialize edildi
+	game->texture.key = NULL;
+	game->texture.value = NULL;
 	game->texture.floor_color[0] = -1;
 	game->texture.ceiling_color[0] = -1;
 	if (argc != 2)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+         #
+#    By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
-#    Updated: 2025/10/19 18:41:29 by ysumeral         ###   ########.fr        #
+#    Updated: 2025/11/17 18:17:12 by zkayadib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT_DIR = ./external/libft
 GNL_DIR = ./external/gnl
 MLX_DIR = ./external/mlx
 INC_DIR = ./include
-MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext
+MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/debugger.c \
 		$(SRC_DIR)/memory.c \
@@ -30,6 +30,8 @@ SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/parse_map.c \
 		$(SRC_DIR)/validate_map.c \
 		$(SRC_DIR)/init.c \
+		$(SRC_DIR)/player.c \
+		$(SRC_DIR)/raycast.c \
 		$(SRC_DIR)/game.c
 GNL =	$(GNL_DIR)/get_next_line.c \
 		$(GNL_DIR)/get_next_line_utils.c
@@ -45,10 +47,12 @@ $(NAME): $(OBJ) $(OBJ_GNL)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(OBJ_GNL) $(LIBFT_LIB) $(MLX)
 
 clean:
+	make -C $(LIBFT_DIR) clean
+	make -C $(MLX_DIR) clean
 	rm -f $(OBJ) $(OBJ_GNL)
 
 fclean: clean
-	make -C $(LIBFT_DIR) clean
+	make -C $(LIBFT_DIR) fclean
 	make -C $(MLX_DIR) clean
 	rm -f $(NAME)
 

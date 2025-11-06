@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 21:16:05 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/10/19 16:11:39 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:11:53 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ void which_line(t_game *game, char *line, int *i)
 {
 	int		key_len;
 
-	free(game->texture.key);
+	// zulfiye: double free alıyorduk
+	if (game->texture.key)
+		free(game->texture.key);
+	game->texture.key = NULL;
 	while (line[*i] != '\0' && line[*i] == ' ')
 		(*i)++;
 	if (ft_strchr("NSWEFC", line[*i]) == NULL)

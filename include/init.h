@@ -8,5 +8,6 @@
 #define IMG_WIDTH 64
 
 void init(t_game *game);
+void	init_player(t_game *game);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:49:16 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/18 17:01:19 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:09:18 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ void init(t_game *game)
 		fatal_debug("window init failed!");
 	init_param(game);
 	init_texture(game);
+	init_player(game);
 }

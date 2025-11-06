@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/19 18:51:54 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:05:17 by zkayadib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@ typedef struct s_map
 	int		size_y;
 }	t_map;
 
+typedef struct s_player
+{
+    double  pos_x;      // Oyuncunun x pozisyonu
+    double  pos_y;      // Oyuncunun y pozisyonu
+    double  dir_x;      // Bakış yönü vektörü x
+    double  dir_y;      // Bakış yönü vektörü y
+    double  plane_x;    // Kamera düzlemi vektörü x
+    double  plane_y;    // Kamera düzlemi vektörü y
+    double  move_speed; // Hareket hızı
+    double  rot_speed;  // Dönüş hızı
+}   t_player;
+
 typedef struct s_game 
 {
 	void		*mlx;
@@ -65,6 +77,7 @@ typedef struct s_game
 	int			player_y;
 	t_texture	texture;
 	t_map		map;
+	t_player    player;
 }	t_game;
 
 void	start(t_game *game);
@@ -72,3 +85,6 @@ void	quit(t_game *game);
 void	fatal_quit(t_game *game);
 
 #endif
+
+//add: s_player struct'ı
+//add: s_game struct'ına t_player değeri eklendi
