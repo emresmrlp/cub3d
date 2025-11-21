@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/17 18:10:18 by zkayadib         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:50:01 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 #include "../include/parse.h"
 #include "../include/init.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = calloc(1, sizeof(t_game));
 	if (!game)

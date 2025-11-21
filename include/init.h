@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/21 16:42:14 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/11/21 16:44:04 by ysumeral         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef INIT_H
 # define INIT_H
 
-#include "game.h"
-#include "debugger.h"
+# include "game.h"
+# include "debugger.h"
 
-#define IMG_HEIGHT 64
-#define IMG_WIDTH 64
+# define IMG_HEIGHT 64
+# define IMG_WIDTH 64
 
-void init(t_game *game);
+void	init(t_game *game);
 void	init_player(t_game *game);
 
 #endif

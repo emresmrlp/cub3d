@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zkayadib <zkayadib@student.42.fr>          +#+  +:+       +#+         #
+#    By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
-#    Updated: 2025/11/17 19:15:06 by zkayadib         ###   ########.fr        #
+#    Updated: 2025/11/21 16:37:39 by ysumeral         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/debugger.c \
 		$(SRC_DIR)/memory.c \
 		$(SRC_DIR)/input.c \
-		$(SRC_DIR)/draw.c \
 		$(SRC_DIR)/parse_file.c \
 		$(SRC_DIR)/parse_util.c \
 		$(SRC_DIR)/parse_line.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:09:09 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/10/19 20:58:09 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/21 19:42:24 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,38 +26,23 @@ static void cleanup_texture(t_game *game)
 		mlx_destroy_image(game->mlx, game->texture.background);
 }
 
+static void cleanup_param_value(char **param)
+{
+	if (*param)
+	{
+		free(*param);
+		*param = NULL;
+	}
+}
+
 static void cleanup_param(t_game *game)
 {
-	if (game->texture.key)
-	{
-		free(game->texture.key);
-		game->texture.key = NULL;
-	}
-	if (game->texture.value)
-	{
-		free(game->texture.value);
-		game->texture.value = NULL;
-	}
-	if (game->texture.no_path)
-	{
-		free(game->texture.no_path);
-		game->texture.no_path = NULL;
-	}
-	if (game->texture.we_path)
-	{
-		free(game->texture.we_path);
-		game->texture.we_path = NULL;
-	}
-	if (game->texture.ea_path)
-	{
-		free(game->texture.ea_path);
-		game->texture.ea_path = NULL;
-	}
-	if (game->texture.so_path)
-	{
-		free(game->texture.so_path);
-		game->texture.so_path = NULL;
-	}
+	cleanup_param_value(&game->texture.key);
+	cleanup_param_value(&game->texture.value);
+	cleanup_param_value(&game->texture.no_path);
+	cleanup_param_value(&game->texture.we_path);
+	cleanup_param_value(&game->texture.ea_path);
+	cleanup_param_value(&game->texture.so_path);
 }
 
 static void cleanup_map(t_game *game, char ***map)
@@ -92,14 +77,12 @@ void cleanup(t_game *game)
 		cleanup_map(game, &game->map.copy);
 		if (game->win)
 		{
-			// YSUMERAL: Destroy the window but do not free the pointer directly because it is managed by the MLX library
 			mlx_destroy_window(game->mlx, game->win);
 			game->win = NULL;
 		}
 		if (game->mlx)
 		{
 			cleanup_texture(game);
-			// YSUMERAL: Destroy the display and free the mlx pointer beacause it was allocated by mlx_init() function
 			mlx_destroy_display(game->mlx);
 			free(game->mlx);
 			game->mlx = NULL;
