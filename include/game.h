@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/21 16:42:13 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/21 20:32:17 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ typedef struct s_player
 	double	plane_y;
 	double	move_speed;
 	double	rot_speed;
+	int     key_w;
+    int     key_s;
+    int     key_a;
+    int     key_d;
+    int     key_left;
+    int     key_right;
 }	t_player;
 
 typedef struct s_game

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 05:30:00 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/21 19:39:47 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/21 20:33:31 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ void init_player(t_game *game)
 	// Player karakterini bul
 	player = game->map.map[game->player_y][game->player_x];
 	set_player_direction(game, player);
-	game->player.move_speed = 0.1;
-	game->player.rot_speed = 0.05;
+	game->player.move_speed = 0.05;
+	game->player.rot_speed = 0.03;
+	game->player.key_w = 0;
+	game->player.key_s = 0;
+	game->player.key_a = 0;
+	game->player.key_d = 0;
+	game->player.key_left = 0;
+	game->player.key_right = 0;
 	debug("init_player: player initialized");
 }
