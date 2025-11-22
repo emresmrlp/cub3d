@@ -6,7 +6,7 @@
 /*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 16:42:14 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 03:40:11 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 15:32:08 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@
 
 void	init(t_game *game);
 void	init_player(t_game *game);
-long	calc_time(void);
-
 
 #endif

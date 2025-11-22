@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 16:46:48 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/21 16:47:06 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:27:27 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,24 @@ typedef struct s_ray
 	int		tex_x;
 }	t_ray;
 
+typedef struct s_draw
+{
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	char	*tex_data;
+	int		tex_line;
+	int		tex_bpp;
+}	t_draw;
+
 void	raycast(t_game *game);
 void	init_ray(t_game *game, t_ray *ray, int x);
 void	dda(t_game *game, t_ray *ray);
 void	calculate_wall_distance(t_ray *ray);
 void	draw_vertical_line(t_game *game, t_ray *ray, int x);
+
+void *get_texture(t_game *game, t_ray *ray);
+void calculate_tex_x(t_game *game, t_ray *ray);
+int calculate_tex_y(int y, int line_height, int img_height);
 
 #endif

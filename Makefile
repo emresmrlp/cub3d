@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+         #
+#    By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
-#    Updated: 2025/11/21 16:37:39 by ysumeral         ###   ########.fr        #
+#    Updated: 2025/11/22 15:26:44 by zulfiye          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,11 @@ SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/init.c \
 		$(SRC_DIR)/player.c \
 		$(SRC_DIR)/raycast.c \
-		$(SRC_DIR)/game.c
+		$(SRC_DIR)/game.c	\
+		$(SRC_DIR)/move.c	\
+		$(SRC_DIR)/draw.c	\
+		$(SRC_DIR)/raycast_utils.c	\
+		$(SRC_DIR)/rotate_and_utils.c
 GNL =	$(GNL_DIR)/get_next_line.c \
 		$(GNL_DIR)/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)

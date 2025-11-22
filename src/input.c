@@ -6,108 +6,13 @@
 /*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:33:41 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 03:55:31 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 15:30:46 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/input.h"
 #include "../include/raycast.h"
 #include <sys/time.h>
-
-//Yeni konum = Eski konum + (Yön vektörü × hız)
-static void move_forward(t_game *game)
-{
-	double new_x = game->player.pos_x + game->player.dir_x * game->player.move_speed;
-	double new_y = game->player.pos_y + game->player.dir_y * game->player.move_speed;
-	
-	//duvar kontrolü
-	if (game->map.map[(int)new_y][(int)new_x] != '1')
-	{
-		game->player.pos_x = new_x;
-		game->player.pos_y = new_y;
-	}
-}
-
-//Yeni konum = Eski konum - (Yön vektörü × hız)
-static void move_backward(t_game *game)
-{
-	double new_x = game->player.pos_x - game->player.dir_x * game->player.move_speed;
-	double new_y = game->player.pos_y - game->player.dir_y * game->player.move_speed;
-	
-	if (game->map.map[(int)new_y][(int)new_x] != '1')
-	{
-		game->player.pos_x = new_x;
-		game->player.pos_y = new_y;
-	}
-}
-
-//plane, oyuncunun görüş açısının genişliğini temsil eder
-//formul aynı, ancak vektör değişiyor(plane)
-static void move_left(t_game *game)
-{
-	double new_x = game->player.pos_x - game->player.plane_x * game->player.move_speed;
-	double new_y = game->player.pos_y - game->player.plane_y * game->player.move_speed;
-	
-	if (game->map.map[(int)new_y][(int)new_x] != '1')
-	{
-		game->player.pos_x = new_x;
-		game->player.pos_y = new_y;
-	}
-}
-
-static void move_right(t_game *game)
-{
-	double new_x = game->player.pos_x + game->player.plane_x * game->player.move_speed;
-	double new_y = game->player.pos_y + game->player.plane_y * game->player.move_speed;
-	
-	if (game->map.map[(int)new_y][(int)new_x] != '1')
-	{
-		game->player.pos_x = new_x;
-		game->player.pos_y = new_y;
-	}
-}
-
-//yeni_x = (eski_x * cos(a)) - (eski_y * sin(a))
-//yeni_y = (eski_x * sin(a)) + (eski_y * cos(a))
-//hem dir için hem de plane için uygulamama sebebimiz, başta kurduğumuz açının bozulmaması için
-static void rotate_left(t_game *game)
-{
-	double old_dir_x = game->player.dir_x;
-	game->player.dir_x = game->player.dir_x * cos(-game->player.rot_speed) - 
-						 game->player.dir_y * sin(-game->player.rot_speed);
-	game->player.dir_y = old_dir_x * sin(-game->player.rot_speed) + 
-						 game->player.dir_y * cos(-game->player.rot_speed);
-	
-	double old_plane_x = game->player.plane_x;
-	game->player.plane_x = game->player.plane_x * cos(-game->player.rot_speed) - 
-						   game->player.plane_y * sin(-game->player.rot_speed);
-	game->player.plane_y = old_plane_x * sin(-game->player.rot_speed) + 
-						   game->player.plane_y * cos(-game->player.rot_speed);
-}
-
-static void rotate_right(t_game *game)
-{
-	double old_dir_x = game->player.dir_x;
-	game->player.dir_x = game->player.dir_x * cos(game->player.rot_speed) - 
-						 game->player.dir_y * sin(game->player.rot_speed);
-	game->player.dir_y = old_dir_x * sin(game->player.rot_speed) + 
-						 game->player.dir_y * cos(game->player.rot_speed);
-	
-	double old_plane_x = game->player.plane_x;
-	game->player.plane_x = game->player.plane_x * cos(game->player.rot_speed) - 
-						   game->player.plane_y * sin(game->player.rot_speed);
-	game->player.plane_y = old_plane_x * sin(game->player.rot_speed) + 
-						   game->player.plane_y * cos(game->player.rot_speed);
-}
-
-static int event_click(void *param)
-{
-	t_game * game;
-	
-	game = (t_game *)param;
-	quit(game);
-	return(0);
-}
 
 static int event_keypress(int key, void *param)
 {
@@ -151,15 +56,6 @@ static int event_keyrelease(int key, void *param)
 	else if (key == 65363)
         game->player.key_right = 0;
 	return (0);
-}
-
-long calc_time(void)
-{
-	long milliseconds;
-	struct timeval time;
-	gettimeofday(&time, NULL);
-	milliseconds = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	return (milliseconds);
 }
 
 static void apply_events(t_game *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 07:52:03 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/21 19:42:57 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:17:23 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ void init_ray(t_game *game, t_ray *ray, int x)
         ray->routine_dist_y = INFINITY;
     else
         ray->routine_dist_y = fabs(1 / ray->ray_dir_y);
-    
-    ray->hit = 0;
+}
+
+static void	init_first_dist(t_game *game, t_ray *ray)
+{
+	ray->hit = 0;
     if (ray->ray_dir_x < 0)
     {
         ray->step_x = -1;
@@ -51,7 +54,6 @@ void init_ray(t_game *game, t_ray *ray, int x)
         ray->step_x = 1;
         ray->first_dist_x = (ray->map_x + 1.0 - game->player.pos_x) * ray->routine_dist_x;
     }
-    
     if (ray->ray_dir_y < 0)
     {
         ray->step_y = -1;
@@ -98,126 +100,6 @@ void calculate_wall_distance(t_ray *ray)
         ray->perp_wall_dist = (ray->first_dist_y - ray->routine_dist_y);
 }
 
-static void *get_texture(t_game *game, t_ray *ray)
-{
-    
-    if (ray->side == 0)
-    {
-        if (ray->ray_dir_x > 0)
-            return (game->texture.ea_wall); //doğu
-        else
-            return (game->texture.we_wall); //batı
-    }
-    else
-    {
-        if (ray->ray_dir_y > 0)
-            return (game->texture.so_wall); //güney
-        else
-            return (game->texture.no_wall); //kuzey
-    }
-}
-
-static void calculate_texture_x(t_game *game, t_ray *ray)
-{
-    // Duvarda ray'in çarptığı tam konumu hesapla
-    if (ray->side == 0)
-        ray->wall_x = game->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
-    else
-        ray->wall_x = game->player.pos_x + ray->perp_wall_dist * ray->ray_dir_x;
-    ray->wall_x -= floor(ray->wall_x);
-    
-    // Texture'ın x koordinatını hesapla
-    ray->tex_x = (int)(ray->wall_x * (double)game->texture.img_width);
-    
-    // Texture'ı düzgün yöne çevir
-    if (ray->side == 0 && ray->ray_dir_x < 0)
-        ray->tex_x = game->texture.img_width - ray->tex_x - 1;
-    if (ray->side == 1 && ray->ray_dir_y > 0)
-        ray->tex_x = game->texture.img_width - ray->tex_x - 1;
-}
-
-void draw_vertical_line(t_game *game, t_ray *ray, int x)
-{
-    int     line_height;
-    int     draw_start;
-    int     draw_end;
-    int     y;
-    void    *texture;
-    char    *tex_data;
-    int     tex_bpp;
-    int     tex_line;
-    int     tex_endian;
-    
-    texture = get_texture(game, ray);
-    if (!texture)
-        return;
-    tex_data = mlx_get_data_addr(texture, &tex_bpp, &tex_line, &tex_endian);
-    if (!tex_data)
-        return;
-    
-    // Texture x koordinatının hesabı
-    calculate_texture_x(game, ray);
-    
-    // Çizgi yüksekliğinin hesabı
-    line_height = (int)(SIZE_Y / ray->perp_wall_dist);
-    
-    // Çizginin başlangıç ve bitiş noktalarının hesabı
-    draw_start = -line_height / 2 + SIZE_Y / 2;
-    if (draw_start < 0)
-        draw_start = 0;
-    
-    draw_end = line_height / 2 + SIZE_Y / 2;
-    if (draw_end >= SIZE_Y)
-        draw_end = SIZE_Y - 1;
-    
-    // Tavanı çiz 
-    y = 0;
-    while (y < draw_start)
-    {
-        int ceiling_color = (game->texture.ceiling_color[0] << 16) | 
-                           (game->texture.ceiling_color[1] << 8) | 
-                           game->texture.ceiling_color[2];
-        char *pixel = game->texture.addr + (y * game->texture.x_byte + x * 4);
-        *(unsigned int *)pixel = ceiling_color;
-        y++;
-    }
-    
-    // Duvarı texture ile çiz
-    y = draw_start;
-    while (y < draw_end)
-    {
-        int tex_y;
-        int color;
-        
-        // Texture'ın y koordinatını hesapla
-        tex_y = (int)((y - SIZE_Y / 2 + line_height / 2) * game->texture.img_height / line_height);
-        if (tex_y < 0)
-            tex_y = 0;
-        if (tex_y >= game->texture.img_height)
-            tex_y = game->texture.img_height - 1;
-        
-        // Texture'dan rengi al
-        color = *(int *)(tex_data + (tex_y * tex_line + ray->tex_x * (tex_bpp / 8)));
-        
-        // Pixel'i çiz
-        char *pixel = game->texture.addr + (y * game->texture.x_byte + x * 4);
-        *(unsigned int *)pixel = color;
-        y++;
-    }
-    
-    // Zemini çiz (floor color)
-    y = draw_end;
-    while (y < SIZE_Y)
-    {
-        int floor_color = (game->texture.floor_color[0] << 16) | 
-                         (game->texture.floor_color[1] << 8) | 
-                         game->texture.floor_color[2];
-        char *pixel = game->texture.addr + (y * game->texture.x_byte + x * 4);
-        *(unsigned int *)pixel = floor_color;
-        y++;
-    }
-}
-
 void raycast(t_game *game)
 {
     t_ray ray;
@@ -227,6 +109,7 @@ void raycast(t_game *game)
     while (x < SIZE_X)
     {
         init_ray(game, &ray, x);
+		init_first_dist(game, &ray);
         dda(game, &ray);
         calculate_wall_distance(&ray);
         draw_vertical_line(game, &ray, x);

@@ -6,11 +6,12 @@
 /*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 05:30:00 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/22 03:51:51 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 15:32:44 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/init.h"
+#include "../include/input.h"
 #include <math.h>
 #include <sys/time.h>
 
