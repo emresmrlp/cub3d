@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 16:43:17 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/21 16:46:51 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:58:21 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PARSE_H
 
 # include "game.h"
-# include "debugger.h"
 # include "../external/libft/libft.h"
 # include <fcntl.h>
 # define RED 0
@@ -22,11 +21,11 @@
 # define BLUE 2
 
 void	set_color(t_game *game, int color, int *loc);
-int		check_file(char *map_file);
+void	check_file(t_game *game, char *path);
 int		check_line(char *line);
 void	parse(t_game *game, int argc, char **argv);
 void	parse_map(t_game *game, int map_fd);
-int		validate_map(t_game *game);
+void	validate_map(t_game *game);
 
 void	which_line(t_game *game, char *line, int *i);
 void	parse_path(t_game *game);

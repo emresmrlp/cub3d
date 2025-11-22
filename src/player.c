@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 05:30:00 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/22 15:32:44 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 18:04:12 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,4 @@ void init_player(t_game *game)
 	
 	// FPS için başlangıç zamanını ayarlandı
 	game->last_frame_time = calc_time();
-	debug("init_player: player initialized");
 }

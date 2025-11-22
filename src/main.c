@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 15:22:35 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 18:15:22 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "../include/debugger.h"
 #include "../include/memory.h"
 #include "../include/game.h"
 #include "../include/input.h"
@@ -27,7 +26,7 @@ int	main(int argc, char **argv)
 
 	game = calloc(1, sizeof(t_game));
 	if (!game)
-		fatal_debug("game allocation failed");
+		fatal_quit(NULL, "Game struct alloc failed...");
 	parse(game, argc, argv);
 	init(game);
 	register_hooks(game);

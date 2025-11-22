@@ -6,34 +6,27 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 03:40:25 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/21 19:29:43 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:15:33 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parse.h"
 
-int  check_file(char *path)
+void  check_file(t_game *game, char *path)
 {
 	char	*extension;
 	int		fd;
 
 	if (!path) // path is NULL?
-		return (0);
+		fatal_quit(game, "Path is not correct.");
 	extension = ft_strrchr(path, '.'); // (test.cub -> .cub) or (test.txt -> .txt)
 	if (!extension || ft_strncmp(extension, ".cub", 5) != 0
 		|| (path == extension) || (*(extension - 1) == '/')) // extension is NULL? extension is just ".cub|0" (not test.cubA)? and path is not just ".cub"? controls
-	{
-		fatal_debug("file extension error");
-		return (0);
-	}
+		fatal_quit(game, "Extension is not correct.");
 	fd = open(path, O_RDONLY); //path can open?
 	if (fd < 0)
-	{
-		fatal_debug("file is not exist");
-		return (0);
-	}
+		fatal_quit(game, "File is not exist.");
 	close(fd);
-	return (1);
 }
 
 int check_line(char *line)
@@ -61,7 +54,7 @@ void set_color(t_game *game, int color, int *loc)
 	if (color < BLUE)
 	{
 		if (*(game->texture.value + *loc) != ',')
-			(fatal_debug("map file is incorrect (in colors)"), fatal_quit(game));
+			fatal_quit(game, "Colors is in correct on the map file.");
 		(*loc)++;
 	}
 	if (!ft_strncmp(game->texture.key, "F", 1))

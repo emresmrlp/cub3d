@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 03:51:44 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 17:57:46 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct s_game
 }	t_game;
 
 void	start(t_game *game);
-void	quit(t_game *game);
-void	fatal_quit(t_game *game);
+void	quit(t_game *game, char *message);
+void	fatal_quit(t_game *game, char *message);
 
 #endif

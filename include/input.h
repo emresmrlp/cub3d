@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:49 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 15:32:12 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 17:56:07 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define INPUT_H
 
 # include "game.h"
-# include "debugger.h"
 
 long	calc_time(void);
 void	register_hooks(t_game *game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_and_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 15:21:00 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/22 15:31:25 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 17:59:36 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int event_click(void *param)
 	t_game * game;
 	
 	game = (t_game *)param;
-	quit(game);
+	quit(game, "Goodbye!");
 	return(0);
 }

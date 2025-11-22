@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+         #
+#    By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
-#    Updated: 2025/11/22 15:26:44 by zulfiye          ###   ########.fr        #
+#    Updated: 2025/11/22 18:12:46 by ysumeral         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ MLX_DIR = ./external/mlx
 INC_DIR = ./include
 MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 SRC =	$(SRC_DIR)/main.c \
-		$(SRC_DIR)/debugger.c \
 		$(SRC_DIR)/memory.c \
 		$(SRC_DIR)/input.c \
 		$(SRC_DIR)/parse_file.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:33:41 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 15:30:46 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 17:58:58 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ static int event_keypress(int key, void *param)
 	t_game * game;
 	
 	game = (t_game *)param;
-	// debug("keypress detected!");
-	// printf("key is: %d\n", key);
 	if (key == 65307 || key == 113)
-		quit(game);
+		quit(game, "Goodbye!");
 	else if (key == 119) //W
         game->player.key_w = 1;
 	else if (key == 115) //S
