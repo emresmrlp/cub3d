@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 16:42:14 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 17:56:06 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 20:46:39 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define INIT_H
 
 # include "game.h"
-#include <sys/time.h>
 
 # define IMG_HEIGHT 64
 # define IMG_WIDTH 64

@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 17:57:46 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 20:47:31 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define SIZE_Y 512
 # define TRUE 1
 # define FALSE 0
-# define FRAME_TIME_MS 10
+# define FRAME_TIME_MS 15
 
 typedef struct s_texture
 {
@@ -69,12 +69,12 @@ typedef struct s_player
 	double	plane_y;
 	double	move_speed;
 	double	rot_speed;
-	int     key_w;
-    int     key_s;
-    int     key_a;
-    int     key_d;
-    int     key_left;
-    int     key_right;
+	int		key_w;
+	int		key_s;
+	int		key_a;
+	int		key_d;
+	int		key_left;
+	int		key_right;
 }	t_player;
 
 typedef struct s_game

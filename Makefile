@@ -6,12 +6,12 @@
 #    By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/28 20:23:36 by ysumeral          #+#    #+#              #
-#    Updated: 2025/11/22 18:12:46 by ysumeral         ###   ########.fr        #
+#    Updated: 2025/11/22 22:15:03 by ysumeral         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I${INC_DIR}
+CFLAGS = -Wall -Wextra -Werror -I${INC_DIR} -g
 SRC_DIR = ./src
 LIBFT_LIB = ./external/libft/libft.a
 LIBFT_DIR = ./external/libft

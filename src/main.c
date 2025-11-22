@@ -6,13 +6,9 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:40:34 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 18:15:22 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 21:03:49 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 #include "../include/memory.h"
 #include "../include/game.h"

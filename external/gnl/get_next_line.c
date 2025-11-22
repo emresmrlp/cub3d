@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:30:33 by zkayadib          #+#    #+#             */
-/*   Updated: 2025/10/18 18:34:55 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 19:26:19 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		if (after)
-			free(after);
-		after = NULL;
+			(free(after), after = NULL);
 		return (NULL);
 	}
 	while (rd > 0 && !findnewline(after))

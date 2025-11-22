@@ -6,13 +6,13 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:09:09 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 18:12:08 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/22 21:04:58 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/memory.h"
 
-static void cleanup_texture(t_game *game)
+static void	cleanup_texture(t_game *game)
 {
 	if (game->texture.no_wall)
 		mlx_destroy_image(game->mlx, game->texture.no_wall);
@@ -26,7 +26,7 @@ static void cleanup_texture(t_game *game)
 		mlx_destroy_image(game->mlx, game->texture.background);
 }
 
-static void cleanup_param_value(char **param)
+static void	cleanup_param_value(char **param)
 {
 	if (*param)
 	{
@@ -35,7 +35,7 @@ static void cleanup_param_value(char **param)
 	}
 }
 
-static void cleanup_param(t_game *game)
+static void	cleanup_param(t_game *game)
 {
 	cleanup_param_value(&game->texture.key);
 	cleanup_param_value(&game->texture.value);
@@ -45,7 +45,7 @@ static void cleanup_param(t_game *game)
 	cleanup_param_value(&game->texture.so_path);
 }
 
-static void cleanup_map(t_game *game, char ***map)
+static void	cleanup_map(t_game *game, char ***map)
 {
 	int	i;
 
@@ -65,7 +65,7 @@ static void cleanup_map(t_game *game, char ***map)
 	}
 }
 
-void cleanup(t_game *game)
+void	cleanup(t_game *game)
 {
 	get_next_line(-1);
 	if (game)
