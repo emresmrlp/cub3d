@@ -6,12 +6,13 @@
 /*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:33:41 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/21 20:42:03 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 03:55:31 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/input.h"
 #include "../include/raycast.h"
+#include <sys/time.h>
 
 //Yeni konum = Eski konum + (Yön vektörü × hız)
 static void move_forward(t_game *game)
@@ -152,6 +153,15 @@ static int event_keyrelease(int key, void *param)
 	return (0);
 }
 
+long calc_time(void)
+{
+	long milliseconds;
+	struct timeval time;
+	gettimeofday(&time, NULL);
+	milliseconds = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (milliseconds);
+}
+
 static void apply_events(t_game *game)
 {
     if (game->player.key_w)
@@ -171,7 +181,16 @@ static void apply_events(t_game *game)
 static int render_loop(void *param)
 {
 	t_game *game = (t_game *)param;
+	long current_time;
+	long time_control;
 	
+	current_time = calc_time();
+	time_control = current_time - game->last_frame_time;
+	
+	// FPS sınırlama: hedef frame time'dan az süre geçtiyse render'ı atla
+	if (time_control < FRAME_TIME_MS)
+		return (0);
+	game->last_frame_time = current_time;
 	apply_events(game);
 	raycast(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->texture.background, 0, 0);

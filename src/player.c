@@ -6,12 +6,13 @@
 /*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 05:30:00 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/21 20:33:31 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 03:51:51 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/init.h"
 #include <math.h>
+#include <sys/time.h>
 
 //dir tek bir konumu ele aldığı için, yalnızca ekranın ortasını görebilirdik
 //yelpaze görünümü için plane'e ihtiyaç duyarız
@@ -47,7 +48,7 @@ void init_player(t_game *game)
 	// Player karakterini bul
 	player = game->map.map[game->player_y][game->player_x];
 	set_player_direction(game, player);
-	game->player.move_speed = 0.05;
+	game->player.move_speed = 0.03;
 	game->player.rot_speed = 0.03;
 	game->player.key_w = 0;
 	game->player.key_s = 0;
@@ -55,5 +56,8 @@ void init_player(t_game *game)
 	game->player.key_d = 0;
 	game->player.key_left = 0;
 	game->player.key_right = 0;
+	
+	// FPS için başlangıç zamanını ayarlandı
+	game->last_frame_time = calc_time();
 	debug("init_player: player initialized");
 }

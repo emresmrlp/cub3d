@@ -6,7 +6,7 @@
 /*   By: zulfiye <zulfiye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:43:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/21 20:32:17 by zulfiye          ###   ########.fr       */
+/*   Updated: 2025/11/22 03:51:44 by zulfiye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/time.h>
 # include "../external/libft/libft.h"
 # include "../external/gnl/get_next_line.h"
 # include "../external/mlx/mlx.h"
@@ -22,6 +23,7 @@
 # define SIZE_Y 512
 # define TRUE 1
 # define FALSE 0
+# define FRAME_TIME_MS 10
 
 typedef struct s_texture
 {
@@ -81,6 +83,7 @@ typedef struct s_game
 	void		*win;
 	int			player_x;
 	int			player_y;
+	long		last_frame_time;
 	t_texture	texture;
 	t_map		map;
 	t_player	player;
