@@ -6,13 +6,12 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:33:41 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 21:02:34 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/27 15:53:20 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/input.h"
 #include "../include/raycast.h"
-#include <sys/time.h>
 
 static int	event_keypress(int key, void *param)
 {

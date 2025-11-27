@@ -5,15 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/22 15:21:00 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/22 21:32:35 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/11/22 15:21:00 by zkayadib          #+#    #+#             */
+/*   Updated: 2025/11/27 15:58:19 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/input.h"
 #include "../include/raycast.h"
-#include "../include/init.h"
-#include <sys/time.h>
 
 void	rotate_left(t_game *game)
 {

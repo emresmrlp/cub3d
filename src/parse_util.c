@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 03:40:25 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 22:18:25 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/27 14:02:28 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	set_color(t_game *game, int color, int *loc)
 	int	rgb;
 
 	rgb = ft_atol(game->texture.value + *loc);
-	if (rgb < 0 || rgb > 255)
+	if (rgb < 0 || rgb > 255 || ft_strlen(game->texture.value + *loc) <= 1)
 		rgb = -1;
 	while (*(game->texture.value + *loc) != '\0'
 		&& ft_isdigit(*(game->texture.value + *loc)))

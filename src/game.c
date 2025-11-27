@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:10:47 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 21:04:45 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/27 15:52:12 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ void	quit(t_game *game, char *message)
 
 void	fatal_quit(t_game *game, char *message)
 {
-	int	i;
-
-	i = 50;
-	while (i > 2)
-	{
-		close(i);
-		i --;
-	}
 	if (message != NULL)
 	{
 		printf("Error\n");

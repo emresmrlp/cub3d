@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 16:46:48 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 18:17:25 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/27 21:50:15 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	draw_vertical_line(t_game *game, t_ray *ray, int x);
 void	*get_texture(t_game *game, t_ray *ray);
 void	calculate_tex_x(t_game *game, t_ray *ray);
 int		calculate_tex_y(int y, int line_height, int img_height);
+int		ctrl(t_game *game, int x, int y);
 
 #endif

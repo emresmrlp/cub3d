@@ -1,5 +1,9 @@
 NO ./texture/north.xpm
-SO ./texture/south.xpm
+NO ./texture/north.xpm
+SO        ./texture/south.xpm
+
+
+
 WE ./texture/west.xpm
 EA ./texture/east.xpm                 
 
@@ -16,23 +20,9 @@ C 198,226,255
 10001
 10001
 10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
-10001
+10001  1 
+10001 1N1
+10001  1
 10001
 10001
 10001

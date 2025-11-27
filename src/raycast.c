@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 07:52:03 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/22 21:26:37 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/10/31 07:52:03 by zkayadib          #+#    #+#             */
+/*   Updated: 2025/11/27 21:50:59 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	dda(t_game *game, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (game->map.map[ray->map_y][ray->map_x] == '1')
+		if (!ctrl(game, ray->map_x, ray->map_y))
 			ray->hit = 1;
 	}
 }

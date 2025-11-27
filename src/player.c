@@ -5,15 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/30 05:30:00 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/22 21:33:03 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/10/30 05:30:00 by zkayadib          #+#    #+#             */
+/*   Updated: 2025/11/27 15:58:10 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/init.h"
 #include "../include/input.h"
-#include <math.h>
-#include <sys/time.h>
 
 static void	set_player_direction_for_we(t_game *game, char direction)
 {

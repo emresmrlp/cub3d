@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:56:24 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 22:19:27 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/27 15:51:41 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	parse_color(t_game *game)
 	return (TRUE);
 }
 
-static void	parse_line(t_game *game, char *line)
+static void	parse_line(t_game *game, char *line, int map_fd)
 {
 	int		i;
 
@@ -72,17 +72,17 @@ static void	parse_line(t_game *game, char *line)
 		(free(game->texture.value), game->texture.value = NULL);
 	game->texture.value = ft_substr(line, i, ft_strlen(line) - i);
 	if (!game->texture.value)
-		fatal_quit(game, "Value alloc failed.");
+		(close(map_fd), fatal_quit(game, "Value alloc failed."));
 	if (!ft_strncmp(game->texture.key, "F", 1)
 		|| !ft_strncmp(game->texture.key, "C", 1))
 	{
 		if (parse_color(game) == FALSE)
-			(free(line), fatal_quit(game, "Color initialize failed."));
+			(free(line), close(map_fd), fatal_quit(game, "Color failed."));
 	}
 	else
 	{
 		if (parse_path(game) == FALSE)
-			(free(line), fatal_quit(game, "Map path initialize"));
+			(free(line), close(map_fd), fatal_quit(game, "Map path failed."));
 	}
 }	
 
@@ -99,7 +99,7 @@ static int	parse_file(t_game *game, char *map_path, int count)
 	{
 		if (check_line(line) == TRUE)
 		{
-			parse_line(game, line);
+			parse_line(game, line, fd);
 			count++;
 			if (count == 6)
 			{
@@ -131,10 +131,10 @@ void	parse(t_game *game, int argc, char **argv)
 	map_fd = parse_file(game, map_path, 0);
 	if (!game->texture.no_path || !game->texture.so_path
 		|| !game->texture.we_path || !game->texture.ea_path)
-		fatal_quit(game, "Missing texture path on the map file.");
+		(close(map_fd), fatal_quit(game, "Missing texture path."));
 	if (game->texture.floor_color[0] == -1)
-		fatal_quit(game, "Missing F on the map file.");
+		(close(map_fd), fatal_quit(game, "Missing F on the map file."));
 	if (game->texture.ceiling_color[0] == -1)
-		fatal_quit(game, "Missing C on the map file.");
+		(close(map_fd), fatal_quit(game, "Missing C on the map file."));
 	parse_map(game, map_fd);
 }

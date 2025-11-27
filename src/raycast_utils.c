@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/22 15:15:24 by zulfiye           #+#    #+#             */
-/*   Updated: 2025/11/22 21:25:19 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/11/22 15:15:24 by zkayadib          #+#    #+#             */
+/*   Updated: 2025/11/27 21:51:08 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,14 @@ void	*get_texture(t_game *game, t_ray *ray)
 		else
 			return (game->texture.no_wall);
 	}
+}
+
+int	ctrl(t_game *game, int x, int y)
+{
+	if (x < 0 || x >= game->map.size_x + 2
+		|| y < 0 || y >= game->map.size_y + 2)
+		return (FALSE);
+	if (game->map.map[y][x] == '1' || game->map.map[y][x] == '*')
+		return (FALSE);
+	return (TRUE);
 }
