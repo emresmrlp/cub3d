@@ -6,13 +6,13 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:55 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/28 15:46:19 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/28 16:05:42 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parse.h"
 
-static void	map_to_lst(t_game *game, int map_fd, char *line)
+static void	map_to_lst(t_game *game, int map_fd, char *line, int *check)
 {
 	t_list	*new_node;
 	int		x;
@@ -29,26 +29,29 @@ static void	map_to_lst(t_game *game, int map_fd, char *line)
 	while (line[x] == ' ')
 		x++;
 	if (line[x] == '\0' || line[x] == '\n')
-	{
-		close(map_fd);
-		fatal_quit(game, "Map space detected.");
-	}
+		*check = 1;
+	else if (*check == 1)
+		*check = 2;
 }
 
 static void	read_map_to_list(t_game *game, int map_fd)
 {
 	char	*line;
 	int		is_map;
+	int		check;
 
+	check = 0;
 	is_map = 0;
 	game->map.map_list = NULL;
 	line = get_next_line(map_fd);
 	while (line != NULL)
 	{
+		if (check == 2)
+			(free(line), fatal_quit(game, "Double map detected."));
 		if (is_map == 0 && check_line(line) == TRUE)
 			is_map = 1;
 		if (is_map == 1)
-			map_to_lst(game, map_fd, line);
+			map_to_lst(game, map_fd, line, &check);
 		if (is_map == 0)
 			free(line);
 		line = get_next_line(map_fd);
