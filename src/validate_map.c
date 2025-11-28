@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 17:54:02 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 20:25:29 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:59:06 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,27 @@ static int	flood_fill(t_game *game, int x, int y)
 	if (flood_fill(game, x, y + 1) == FALSE)
 		return (FALSE);
 	if (flood_fill(game, x, y - 1) == FALSE)
+		return (FALSE);
+	return (TRUE);
+}
+
+static int	all_map_flood_fill(t_game *game, int x, int y)
+{
+	if (x < 0 || y < 0 || x >= game->map.size_x + 2
+		|| y >= game->map.size_y + 2)
+		return (TRUE);
+	if (game->map.copy[y][x] == '1' || game->map.copy[y][x] == '.')
+		return (TRUE);
+	if (game->map.copy[y][x] == '0')
+		fatal_quit(game, "All map flood fill failed.");
+	game->map.copy[y][x] = '.';
+	if (all_map_flood_fill(game, x + 1, y) == FALSE)
+		return (FALSE);
+	if (all_map_flood_fill(game, x - 1, y) == FALSE)
+		return (FALSE);
+	if (all_map_flood_fill(game, x, y + 1) == FALSE)
+		return (FALSE);
+	if (all_map_flood_fill(game, x, y - 1) == FALSE)
 		return (FALSE);
 	return (TRUE);
 }
@@ -82,4 +103,5 @@ void	validate_map(t_game *game)
 	set_player_coord(game);
 	copy_create(game);
 	flood_fill(game, game->player_x, game->player_y);
+	all_map_flood_fill(game, 0, 0);
 }

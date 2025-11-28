@@ -6,25 +6,28 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 21:16:05 by zkayadib          #+#    #+#             */
-/*   Updated: 2025/11/27 15:58:42 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:56:01 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parse.h"
 
-static void	assign_texture_path_util(t_game *game, char **dest_path, char *path)
+static int	assign_texture_path_util(char **dest_path, char *path)
 {
 	if (*dest_path)
 	{
 		free(path);
 		path = NULL;
-		fatal_quit(game, "Map is not correct!");
+		return (FALSE);
 	}
 	else
+	{
 		*dest_path = path;
+		return (TRUE);
+	}
 }
 
-static void	assign_texture_path(t_game *game, char *key, char *path)
+static int	assign_texture_path(t_game *game, char *key, char *path)
 {
 	char	**dest_path;
 
@@ -40,9 +43,12 @@ static void	assign_texture_path(t_game *game, char *key, char *path)
 	else
 	{
 		free(path);
-		return ;
+		return (TRUE);
 	}
-	assign_texture_path_util(game, dest_path, path);
+	if (assign_texture_path_util(dest_path, path))
+		return (TRUE);
+	else
+		return (FALSE);
 }
 
 int	parse_path(t_game *game)
@@ -64,7 +70,8 @@ int	parse_path(t_game *game)
 	path = ft_substr(game->texture.value, start, i - start);
 	if (!path)
 		return (FALSE);
-	assign_texture_path(game, game->texture.key, path);
+	if (!assign_texture_path(game, game->texture.key, path))
+		return (FALSE);
 	while (game->texture.value[i] == ' ' || game->texture.value[i] == '\t')
 		i++;
 	if (game->texture.value[i] != '\0' && game->texture.value[i] != '\n')

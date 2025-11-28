@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 17:19:55 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/11/22 21:49:07 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:46:19 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,24 @@
 static void	map_to_lst(t_game *game, int map_fd, char *line)
 {
 	t_list	*new_node;
+	int		x;
 
+	x = 0;
 	new_node = ft_lstnew(line);
 	if (!new_node)
 	{
-		free(line);
 		close(map_fd);
 		fatal_quit(game, "Map reading failed.");
 	}
 	ft_lstadd_back(&game->map.map_list, new_node);
 	check_invalid_char(game, map_fd, line);
+	while (line[x] == ' ')
+		x++;
+	if (line[x] == '\0' || line[x] == '\n')
+	{
+		close(map_fd);
+		fatal_quit(game, "Map space detected.");
+	}
 }
 
 static void	read_map_to_list(t_game *game, int map_fd)
